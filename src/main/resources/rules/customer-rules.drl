@@ -1,0 +1,85 @@
+package rules;
+
+import com.yjc.entity.*;
+
+//rule "rule_1"
+//    when
+//    $order:Order();
+//    $customer:Customer(orderList contains $order);
+//    then
+//    System.out.println("list 保含 $order");
+//end
+//
+//rule "rule_2"
+//    when
+//    $order:Order();
+//    $customer:Customer(orderList not contains $order);
+//    then
+//    System.out.println("list 不保含 $order");
+//end
+//
+//rule "rule_3"
+//    when
+//    $customer:Customer(name matches "张.*");
+//    then
+//    System.out.println("Customer 匹配 ");
+//end
+//
+//rule "rule_4"
+//    when
+//    $customer:Customer(name not matches "张.*");
+//    then
+//    System.out.println("Customer 不匹配 ");
+//end
+
+//rule "rule_5"
+//    when
+//        eval(true);//默认成立
+//    then
+//        Customer cus = new Customer();
+//        cus.setName("张三");
+//        insert(cus);
+//        System.out.println("测试insert方法触发");
+//end
+//
+//rule "rule_6"
+//    when
+//        $customer:Customer(name == "张三")
+//    then
+//        System.out.println("测试insert方法触发2"+$customer.getName());
+//    end
+
+
+//rule "rule_7"
+//    no-loop true //规则只会匹配一次,防止死循环
+//    when
+//        $customer:Customer(name == "李四");
+//    then
+//
+//        $customer.setName("张三");
+//        update($customer);
+//        System.out.println("测试update方法触发");
+//end
+//
+//rule "rule_8"
+//    when
+//        $customer:Customer(name == "张三");
+//    then
+//        System.out.println("测试update方法触发2"+$customer.getName());
+//end
+
+//rule "rule_9"
+//    no-loop true //规则只会匹配一次,防止死循环
+//    when
+//        $customer:Customer(name == "李四");
+//    then
+//        retract($customer);
+//        System.out.println("测试retract方法触发");
+//end
+//
+//rule "rule_8"
+//    when
+//        $customer:Customer();
+//    then
+//        System.out.println("测试retract方法触发2"+$customer.getName());
+//end

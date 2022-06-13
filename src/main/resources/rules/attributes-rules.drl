@@ -1,0 +1,28 @@
+package rules;
+
+import com.yjc.entity.*;
+
+
+//rule "attributes_rule1"
+//salience 1
+//    when
+//        eval(true)
+//    then
+//    System.out.println("rule1");
+//end
+//
+//rule "attributes_rule2"
+//salience 2
+//    when
+//        eval(true)
+//    then
+//    System.out.println("rule2");
+//end
+
+rule "attributes_rule3"
+date-effective "2022-06-11"
+    when
+        eval(true)
+    then
+    System.out.println("rule3");
+end

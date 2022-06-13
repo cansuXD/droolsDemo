@@ -1,0 +1,36 @@
+package rules;
+
+import com.yjc.entity.Order;
+
+//100元以下, 不加分
+rule "score_1"
+when
+    $order:Order(amount<100)
+then
+    $order.setScore(0);
+    System.out.println("触发了100元以下规则");
+end
+//100元-500元 加100分
+rule "score_2"
+when
+    $order:Order(amount>=100&&amount<500)
+then
+    $order.setScore(100);
+    System.out.println("触发了100元-500元规则");
+end
+//500元-1000元 加500分
+rule "score_3"
+when
+    $order:Order(amount>=500&&amount<1000)
+then
+    $order.setScore(500);
+    System.out.println("触发了500元-1000元规则");
+end
+//1000元 以上 加1000分
+rule "score_4"
+when
+    $order:Order(amount>=1000)
+then
+    $order.setScore(1000);
+    System.out.println("触发了1000元 以上规则");
+end
