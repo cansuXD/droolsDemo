@@ -1,6 +1,7 @@
 package rules;
 
-import com.yjc.entity.*;
+import com.yjc.entity.*
+import java.time.LocalDateTime;
 
 
 //rule "attributes_rule1"
@@ -19,10 +20,59 @@ import com.yjc.entity.*;
 //    System.out.println("rule2");
 //end
 
-rule "attributes_rule3"
-date-effective "2022-06-11"
+//rule "attributes_rule3"
+//date-effective "2022-06-11"
+//    when
+//        eval(true)
+//    then
+//    System.out.println("rule3");
+//end
+
+//rule "attributes_rule5"
+//activation-group "test"
+//    when
+//        eval(true)
+//    then
+//    System.out.println("rule5");
+//end
+//
+//rule "attributes_rule6"
+//salience 2
+//activation-group "test"
+//    when
+//        eval(true)
+//    then
+//    System.out.println("rule6");
+//end
+
+//rule "attributes_rule7"
+//agenda-group "001"
+//    when
+//        eval(true)
+//    then
+//    System.out.println("rule7");
+//end
+//
+//rule "attributes_rule8"
+//agenda-group "002"
+//    when
+//        eval(true)
+//    then
+//    System.out.println("rule8");
+//end
+
+rule "attributes_rule9"
+timer (5s 2s)//五秒后触发,每两秒执行一次
     when
         eval(true)
     then
-    System.out.println("rule3");
+    System.out.println("rule9" + LocalDateTime.now().toString());
+end
+
+rule "attributes_rule10"
+timer (cron:0/1 * * * * ?) //含义：每隔1秒触发⼀次
+    when
+        eval(true)
+    then
+    System.out.println("rule10"+ LocalDateTime.now().toString());
 end

@@ -88,4 +88,22 @@ public class TestDrools {
 
         kieSession.dispose();
     }
+
+    @Test
+    public void test5() throws InterruptedException {
+        KieServices kieServices = KieServices.Factory.get();
+        KieContainer kieClasspathContainer = kieServices.getKieClasspathContainer();
+        KieSession kieSession = kieClasspathContainer.newKieSession();
+
+//        kieSession.getAgenda().getAgendaGroup("002");   //获得执行焦点
+        new Thread(() -> {
+            //启动规则引擎进⾏规则匹配，直到调⽤halt⽅法才结束规则引擎
+            kieSession.fireUntilHalt();
+        }).start();
+
+        Thread.sleep(10000); //结束规则引擎
+        kieSession.halt();
+        kieSession.fireAllRules();
+        kieSession.dispose();
+    }
 }
