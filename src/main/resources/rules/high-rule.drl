@@ -1,0 +1,21 @@
+package rules;
+
+global java.util.List myList
+
+rule "global_rule1"
+
+    when
+        eval(true)
+    then
+    myList.add("123");
+    System.out.println("往list增加元素");
+end
+
+rule "global_rule2"
+
+    when
+        eval(true)
+    then
+    System.out.println("list元素个数"+myList.size());
+    System.out.println("往list增加元素2");
+end

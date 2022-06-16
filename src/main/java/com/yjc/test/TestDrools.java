@@ -106,4 +106,18 @@ public class TestDrools {
         kieSession.fireAllRules();
         kieSession.dispose();
     }
+
+    @Test
+    public void test6() {
+        KieServices kieServices = KieServices.Factory.get();
+        KieContainer kieClasspathContainer = kieServices.getKieClasspathContainer();
+        KieSession kieSession = kieClasspathContainer.newKieSession();
+
+        List<String> javaList = new ArrayList();
+        kieSession.setGlobal("myList", javaList);
+        kieSession.fireAllRules();
+
+        System.out.println("规则结束,list:"+javaList);
+        kieSession.dispose();
+    }
 }
