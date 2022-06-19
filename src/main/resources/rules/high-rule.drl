@@ -1,21 +1,43 @@
 package rules;
 
+import com.yjc.entity.Person;
 global java.util.List myList
 
-rule "global_rule1"
+//rule "global_rule1"
+//
+//    when
+//        eval(true)
+//    then
+//    myList.add("123");
+//    System.out.println("往list增加元素");
+//end
+//
+//rule "global_rule2"
+//
+//    when
+//        eval(true)
+//    then
+//    System.out.println("list元素个数"+myList.size());
+//    System.out.println("往list增加元素2");
+//end
 
-    when
-        eval(true)
-    then
-    myList.add("123");
-    System.out.println("往list增加元素");
+query "query_1"
+    $person:Person(age>30);
 end
 
-rule "global_rule2"
+//带参数查询
+query "query_2"(String paramName)
+    $person:Person(age<30,name == paramName);
+end
 
+function String format(String name){
+    return "hello"+name;
+}
+
+rule "test-function"
     when
-        eval(true)
+        $person:Person(name!=null&&age>30)
     then
-    System.out.println("list元素个数"+myList.size());
-    System.out.println("往list增加元素2");
+        String pack = format($person.getName());
+        System.out.println(pack);
 end
